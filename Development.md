@@ -29,13 +29,19 @@ http://localhost:3000/
 
 <br/>
 
-## 02 Модуль тего
+## 02 Модуль тегов
 
 <br/>
 
 ### 004 Создаем модуль и контроллер тегов
 
     $ yarn run start:dev
+
+http://localhost:3000/tags
+
+<br/>
+
+### 005 Создаем сервис для тегов
 
 http://localhost:3000/tags
 
