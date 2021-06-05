@@ -69,6 +69,20 @@ http://localhost:3000/tags
 
 ### 009 Создаем сущность тега
 
+<br/>
+
+### 010 Начинаем работать с репозиторием тегов
+
+```
+INSERT INTO tags (name) VALUES ('dragons');
+INSERT INTO tags (name) VALUES ('coffee');
+SELECT * FROM tags;
+```
+
+<br/>
+
+http://localhost:3000/tags
+
 <br/><br/>
 
 ---
