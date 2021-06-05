@@ -2,7 +2,7 @@
 
 <br/>
 
-### 01 Подготавливаем инструменты
+## 01 Подготавливаем инструменты
 
 **RealWorld API Spec:**  
 https://github.com/gothinkster/realworld/tree/master/api
@@ -26,6 +26,18 @@ https://github.com/gothinkster/realworld/tree/master/api
 <br/>
 
 http://localhost:3000/
+
+<br/>
+
+## 02 Модуль тего
+
+<br/>
+
+### 004 Создаем модуль и контроллер тегов
+
+    $ yarn run start:dev
+
+http://localhost:3000/tags
 
 <br/><br/>
 
