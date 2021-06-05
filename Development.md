@@ -65,6 +65,10 @@ http://localhost:3000/tags
     $ yarn add @nestjs/typeorm
     $ yarn add pg
 
+<br/>
+
+### 009 Создаем сущность тега
+
 <br/><br/>
 
 ---
