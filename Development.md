@@ -45,6 +45,26 @@ http://localhost:3000/tags
 
 http://localhost:3000/tags
 
+<br/>
+
+### 006 Настраиваем абсолютные пути
+
+Пропустил. Думаю, можно намного проще.
+
+<br/>
+
+### 007 Устанавливаем Postgres
+
+Буду использовать базу с помощью docker.
+
+<br/>
+
+### 008 Конфигурируем базу данных
+
+    $ yarn add typeorm
+    $ yarn add @nestjs/typeorm
+    $ yarn add pg
+
 <br/><br/>
 
 ---
