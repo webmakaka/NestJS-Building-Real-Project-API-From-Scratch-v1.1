@@ -138,6 +138,8 @@ $ curl \
 
 ### 014 Создаем сущность пользователя
 
+<br/>
+
     $ yarn add bcrypt
 
 <br/>
@@ -153,7 +155,7 @@ $ curl \
 
 <br/>
 
-**returns: **
+**returns:**
 
 ```
 {
@@ -163,6 +165,44 @@ $ curl \
     "image": "",
     "password": "$2b$10$lxE257OTu1LWPSOkiGa3.OqZWkUb6gBlKiJRK1SL4euAasWYORmxC",
     "username": "marley"
+}
+```
+
+<br/>
+
+### 015 Генерируем JWT токен
+
+<br/>
+
+    $ yarn add jsonwebtoken
+
+<br/>
+
+    $ yarn db:create AddUsernameToUsers
+    $ yarn db:drop
+    $ yarn db:migrate
+
+<br/>
+
+```
+// CREATE USER
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+    "user": {
+        "bio": "",
+        "email": "marley@example.com",
+        "id": 1,
+        "image": "",
+        "password": "$2b$10$gGSVcQMM0ENYxhGOinnnze95Qg1iGOAHy1LwOkQAv4hMe5L3d.OkC",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTYyMjk4NTYwMX0.ohzN4L5ggtgIiIFgQ9idMTGuv0hfHcTuVpTRx04_vCA",
+        "username": "marley"
+    }
 }
 ```
 
