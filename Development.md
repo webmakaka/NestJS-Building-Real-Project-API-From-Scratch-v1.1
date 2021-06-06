@@ -101,6 +101,17 @@ http://localhost:3000/tags
 SELECT * FROM migrations;
 ```
 
+<br/>
+
+### 012 Подготавливаем запрос для регистрации
+
+```
+// CREATE USER
+$ curl \
+    --header "Content-Type: application/json" \
+    --request POST http://localhost:3000/users
+```
+
 <br/><br/>
 
 ---
