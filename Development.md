@@ -175,6 +175,7 @@ $ curl \
 <br/>
 
     $ yarn add jsonwebtoken
+    $ yarn add -D @types/jsonwebtoken
 
 <br/>
 
@@ -203,6 +204,32 @@ $ curl \
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTYyMjk4NTYwMX0.ohzN4L5ggtgIiIFgQ9idMTGuv0hfHcTuVpTRx04_vCA",
         "username": "marley"
     }
+}
+```
+
+<br/>
+
+### 016 Знакомимся с валидацией
+
+<br/>
+
+    $ yarn add class-validator
+    $ yarn add class-transformer
+
+<br/>
+
+```
+// CREATE USER
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+    "message": "Email or username are taken",
+    "statusCode": 422
 }
 ```
 
