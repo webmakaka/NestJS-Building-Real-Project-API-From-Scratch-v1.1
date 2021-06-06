@@ -112,6 +112,28 @@ $ curl \
     --request POST http://localhost:3000/users
 ```
 
+<br/>
+
+### 012 Подготавливаем запрос для регистрации
+
+<br/>
+
+### 013 Что такое DTO?
+
+```
+// CREATE USER
+$ curl \
+    --data '{
+        "user": {
+            "username": "marley",
+            "email": "marley@example.com",
+            "password": "pass123"}
+    }' \
+    --header "Content-Type: application/json" \
+    --request POST http://localhost:3000/users \
+    | python -m json.tool
+```
+
 <br/><br/>
 
 ---
