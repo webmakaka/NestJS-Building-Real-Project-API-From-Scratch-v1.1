@@ -134,6 +134,38 @@ $ curl \
     | python -m json.tool
 ```
 
+<br/>
+
+### 014 Создаем сущность пользователя
+
+    $ yarn add bcrypt
+
+<br/>
+
+    $ yarn db:create CreateUsers
+    $ yarn db:migrate
+
+<br/>
+
+```
+// CREATE USER
+```
+
+<br/>
+
+**returns: **
+
+```
+{
+    "bio": "",
+    "email": "marley@example.com",
+    "id": 1,
+    "image": "",
+    "password": "$2b$10$lxE257OTu1LWPSOkiGa3.OqZWkUb6gBlKiJRK1SL4euAasWYORmxC",
+    "username": "marley"
+}
+```
+
 <br/><br/>
 
 ---
