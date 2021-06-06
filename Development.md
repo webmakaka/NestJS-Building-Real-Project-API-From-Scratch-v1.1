@@ -83,6 +83,24 @@ SELECT * FROM tags;
 
 http://localhost:3000/tags
 
+<br/>
+
+## 03 Модуль авторизации
+
+<br/>
+
+### 011 Знакомимся с миграциями
+
+    $ yarn db:drop
+    $ yarn db:create CreateTags
+    $ yarn db:migrate
+
+<br/>
+
+```
+SELECT * FROM migrations;
+```
+
 <br/><br/>
 
 ---
