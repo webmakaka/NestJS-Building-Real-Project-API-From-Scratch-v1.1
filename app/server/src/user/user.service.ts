@@ -36,6 +36,10 @@ export class UserService {
     return await this.userRepository.save(newUser);
   }
 
+  async findById(id: number): Promise<UserEntity> {
+    return this.userRepository.findOne(id);
+  }
+
   async login(loginUserDto: LoginUserDto): Promise<UserEntity> {
     const user = await this.userRepository.findOne(
       {
@@ -46,7 +50,7 @@ export class UserService {
 
     if (!user) {
       throw new HttpException(
-        'Credential are not valid',
+        'Credentials are not valid',
         HttpStatus.UNPROCESSABLE_ENTITY,
       );
     }
@@ -58,7 +62,7 @@ export class UserService {
 
     if (!isPasswordCorrect) {
       throw new HttpException(
-        'Credential are not valid',
+        'Credentials are not valid',
         HttpStatus.UNPROCESSABLE_ENTITY,
       );
     }
