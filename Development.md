@@ -273,6 +273,8 @@ $ curl \
 
     $ export TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTYyMzAzMzg2Nn0.99n8EpwQW8TZM0KP3gz85VY1lkCTaXboxUC7AM6AX4k
 
+<br/>
+
 ```
 // LOGIN USER
 $ curl \
@@ -284,6 +286,21 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request POST http://localhost:3000/users/login \
+    | python -m json.tool
+```
+
+<br/>
+
+### 019 Создаем декоратор для пользователя
+
+<br/>
+
+```
+// GET CURRENT USER
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request GET http://localhost:3000/user \
     | python -m json.tool
 ```
 

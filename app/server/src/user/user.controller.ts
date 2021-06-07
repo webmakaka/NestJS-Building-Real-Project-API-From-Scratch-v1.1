@@ -3,15 +3,15 @@ import {
   Controller,
   Get,
   Post,
-  Req,
   UsePipes,
-  ValidationPipe,
+  ValidationPipe
 } from '@nestjs/common';
-import { IExpressRequest } from 'types/expressRequest.interface';
-import { CreateUserDto } from 'user/dto/createUser.dto';
-import { LoginUserDto } from 'user/dto/login.dto';
-import { UserResponseInterface } from 'user/types/userResponse.interface';
-import { UserService } from 'user/user.service';
+import {User} from 'user/decorators/user.decorator';
+import {CreateUserDto} from 'user/dto/createUser.dto';
+import {LoginUserDto} from 'user/dto/login.dto';
+import {UserResponseInterface} from 'user/types/userResponse.interface';
+import {UserEntity} from 'user/user.entity';
+import {UserService} from 'user/user.service';
 
 @Controller()
 export class UserController {
@@ -36,10 +36,7 @@ export class UserController {
   }
 
   @Get('user')
-  async currentUser(
-    @Req() request: IExpressRequest,
-  ): Promise<UserResponseInterface> {
-    console.log(request.user);
-    return this.userService.buildUserResponse(request.user);
+  async currentUser(@User() user: UserEntity): Promise<UserResponseInterface> {
+    return this.userService.buildUserResponse(user);
   }
 }
