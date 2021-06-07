@@ -271,7 +271,7 @@ $ curl \
 
 ### 018 Middleware авторизации
 
-    $ export TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTYyMzAzMzg2Nn0.99n8EpwQW8TZM0KP3gz85VY1lkCTaXboxUC7AM6AX4k
+    $ export TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTYyMzA0NDIyNX0.5cUoFz-R8b77gJVv60PaLu8-wmgLtwkfqOWXYQYfFpg
 
 <br/>
 
@@ -303,6 +303,10 @@ $ curl \
     --request GET http://localhost:3000/user \
     | python -m json.tool
 ```
+
+<br/>
+
+### 020 Guard для авторизации
 
 <br/><br/>
 
