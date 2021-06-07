@@ -233,6 +233,40 @@ $ curl \
 }
 ```
 
+<br/>
+
+### 017 Реализуем логин запрос
+
+```
+// LOGIN USER
+$ curl \
+    --data '{
+        "user": {
+            "email": "marley@example.com",
+            "password": "pass123"}
+    }' \
+    --header "Content-Type: application/json" \
+    --request POST http://localhost:3000/users/login \
+    | python -m json.tool
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+    "user": {
+        "bio": "",
+        "email": "marley@example.com",
+        "id": 1,
+        "image": "",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTYyMzAzMzg2Nn0.99n8EpwQW8TZM0KP3gz85VY1lkCTaXboxUC7AM6AX4k",
+        "username": "marley"
+    }
+}
+```
+
 <br/><br/>
 
 ---
