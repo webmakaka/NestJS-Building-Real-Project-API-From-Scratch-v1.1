@@ -308,6 +308,25 @@ $ curl \
 
 ### 020 Guard для авторизации
 
+<br/>
+
+### 021 Обновление текущего пользователя
+
+```
+// UPDATE CURRENT USER
+$ curl \
+    --data '{
+        "user": {
+            "email": "marley@example.com",
+            "password": "pass123",
+            "bio": "This is my BIO"}
+    }' \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request PUT http://localhost:3000/user \
+    | python -m json.tool
+```
+
 <br/><br/>
 
 ---
