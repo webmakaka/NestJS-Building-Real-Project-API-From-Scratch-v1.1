@@ -404,11 +404,15 @@ $ curl \
 
 ### 024 Заканчиваем создание статьи
 
+<br/>
+
     $ yarn add slugify
 
 <br/>
 
 **returns (slug):**
+
+<br/>
 
 ```
 {
@@ -435,6 +439,18 @@ $ curl \
         "updatedAt": "2021-06-08T01:21:58.186Z"
     }
 }
+```
+
+<br/>
+
+### 025 Реализуем получение статьи по слагу
+
+```
+// GET ARTICLE BY SLUG
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET http://localhost:3000/articles/how-to-train-your-dragon-17mw6c \
+    | python -m json.tool
 ```
 
 <br/><br/>
