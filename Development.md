@@ -327,6 +327,20 @@ $ curl \
     | python -m json.tool
 ```
 
+<br/>
+
+## 04 Модуль статьи
+
+<br/>
+
+### 022 Создание модуля статьи
+
+<br/>
+
+    $ yarn db:create CreateArticles
+    $ yarn db:drop
+    $ yarn db:migrate
+
 <br/><br/>
 
 ---
