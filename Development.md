@@ -73,6 +73,8 @@ http://localhost:3000/tags
 
 ### 010 Начинаем работать с репозиторием тегов
 
+<br/>
+
 ```
 INSERT INTO tags (name) VALUES ('dragons');
 INSERT INTO tags (name) VALUES ('coffee');
@@ -340,6 +342,63 @@ $ curl \
     $ yarn db:create CreateArticles
     $ yarn db:drop
     $ yarn db:migrate
+
+<br/>
+
+### 023 Создание метода статьи (Продолжение)
+
+<br/>
+
+    $ yarn db:create AddRelationsBetweenArticleAndUser
+    $ yarn db:migrate
+
+<br/>
+
+```
+// CREATE ARTICLE
+$ curl \
+    --data '{
+        "article": {
+            "title": "How to train your dragon",
+            "description": "Ever wonder how?",
+            "body": "You have to believe",
+            "tagList": ["reactjs", "angularjs", "dragons"]
+        }
+    }' \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request POST http://localhost:3000/articles \
+    | python -m json.tool
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+    "author": {
+        "bio": "",
+        "email": "marley@example.com",
+        "id": 1,
+        "image": "",
+        "username": "marley"
+    },
+    "body": "You have to believe",
+    "createdAt": "2021-06-08T01:03:13.388Z",
+    "description": "Ever wonder how?",
+    "favoritesCount": 0,
+    "id": 1,
+    "slug": "foo",
+    "tagList": [
+        "reactjs",
+        "angularjs",
+        "dragons"
+    ],
+    "title": "How to train your dragon",
+    "updatedAt": "2021-06-08T01:03:13.388Z"
+}
+```
 
 <br/><br/>
 
