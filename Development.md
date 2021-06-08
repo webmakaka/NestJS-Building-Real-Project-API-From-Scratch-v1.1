@@ -412,6 +412,8 @@ $ curl \
 
 **returns (slug):**
 
+<br/>
+
 ```
 {
     "article": {
