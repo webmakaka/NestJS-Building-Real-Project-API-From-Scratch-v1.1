@@ -404,6 +404,8 @@ $ curl \
 
 ### 024 Заканчиваем создание статьи
 
+<br/>
+
     $ yarn add slugify
 
 <br/>
@@ -433,6 +435,82 @@ $ curl \
         ],
         "title": "How to train your dragon",
         "updatedAt": "2021-06-08T01:21:58.186Z"
+    }
+}
+```
+
+<br/>
+
+### 025 Реализуем получение статьи по слагу
+
+```
+// GET ARTICLE BY SLUG
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET http://localhost:3000/articles/how-to-train-your-dragon-17mw6c \
+    | python -m json.tool
+```
+
+<br/>
+
+### 026 Имплементируем удаление статьи
+
+```
+// DELETE ARTICLE BY SLUG
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request DELETE http://localhost:3000/articles/how-to-train-your-dragon-17mw6c \
+    | python -m json.tool
+```
+
+<br/>
+
+### 027 Создаем обновление статьи
+
+```
+// UPDATE ARTICLE
+$ curl \
+    --data '{
+        "article": {
+            "title": "Updated Title",
+            "description": "Updated description",
+            "body": "Updated body"
+        }
+    }' \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request PUT http://localhost:3000/articles/how-to-train-your-dragon-3xtce8 \
+    | python -m json.tool
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+    "article": {
+        "author": {
+            "bio": "",
+            "email": "marley@example.com",
+            "id": 1,
+            "image": "",
+            "username": "marley"
+        },
+        "body": "Updated body",
+        "createdAt": "2021-06-08T02:27:21.691Z",
+        "description": "Updated description",
+        "favoritesCount": 0,
+        "id": 3,
+        "slug": "how-to-train-your-dragon-3xtce8",
+        "tagList": [
+            "reactjs",
+            "angularjs",
+            "dragons"
+        ],
+        "title": "Updated Title",
+        "updatedAt": "2021-06-08T05:33:24.906Z"
     }
 }
 ```
