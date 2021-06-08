@@ -400,6 +400,43 @@ $ curl \
 }
 ```
 
+<br/>
+
+### 024 Заканчиваем создание статьи
+
+    $ yarn add slugify
+
+<br/>
+
+**returns (slug):**
+
+```
+{
+    "article": {
+        "author": {
+            "bio": "",
+            "email": "marley@example.com",
+            "id": 1,
+            "image": "",
+            "username": "marley"
+        },
+        "body": "You have to believe",
+        "createdAt": "2021-06-08T01:21:58.186Z",
+        "description": "Ever wonder how?",
+        "favoritesCount": 0,
+        "id": 2,
+        "slug": "how-to-train-your-dragon-17mw6c",
+        "tagList": [
+            "reactjs",
+            "angularjs",
+            "dragons"
+        ],
+        "title": "How to train your dragon",
+        "updatedAt": "2021-06-08T01:21:58.186Z"
+    }
+}
+```
+
 <br/><br/>
 
 ---
