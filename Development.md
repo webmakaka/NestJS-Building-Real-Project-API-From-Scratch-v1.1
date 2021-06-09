@@ -523,6 +523,8 @@ $ curl \
 
 https://github.com/typeorm/typeorm/blob/master/docs/select-query-builder.md
 
+<br/>
+
 ```
 // GET ALL ARTICLES
 $ curl \
@@ -534,7 +536,7 @@ $ curl \
 <br/>
 
 ```
-// GET ALL ARTICLES
+// GET ALL ARTICLES WITH LIMIT AND OFFSET
 $ curl \
     --header "Content-Type: application/json" \
     --request GET "http://localhost:3000/articles?limit=2&offset=0" \
@@ -544,7 +546,7 @@ $ curl \
 <br/>
 
 ```
-// GET ALL ARTICLES
+// GET ALL ARTICLES BY AUTHOR
 $ curl \
     --header "Content-Type: application/json" \
     --request GET "http://localhost:3000/articles?author=marley" \
@@ -554,7 +556,7 @@ $ curl \
 <br/>
 
 ```
-// GET ALL ARTICLES
+// GET ALL ARTICLES WITH TAG
 $ curl \
     --header "Content-Type: application/json" \
     --request GET "http://localhost:3000/articles?tag=dragons" \
@@ -570,12 +572,14 @@ $ curl \
     $ yarn db:create AddFavoritesRelationsBetweenArticleAndUser
     $ yarn db:migrate
 
+<br/>
+
 ```
 // LIKE ARTICLE
 $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
-    --request POST "http://localhost:3000/articles/how-to-train-your-dragon-3xtce8/favorite" \
+    --request POST "http://localhost:3000/articles/how-to-train-your-dragon-3ptf9i/favorite" \
     | python -m json.tool
 ```
 
@@ -612,6 +616,41 @@ $ curl \
 }
 ```
 
+<br/>
+
+### 030 Реализуем дизлайк статей
+
+<br/>
+
+```
+// GET LIKED ARTICLE BY USER
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET "http://localhost:3000/articles?favorited=marley" \
+    | python -m json.tool
+```
+
+<br/>
+
+```
+// DISLIKE ARTICLE
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request DELETE "http://localhost:3000/articles/how-to-train-your-dragon-3xtce8/favorite" \
+    | python -m json.tool
+```
+
+<br/>
+
+```
+// GET ALL ARTICLES
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request GET http://localhost:3000/articles \
+    | python -m json.tool
+```
 
 <br/><br/>
 

@@ -1,5 +1,5 @@
-import {ArticleEntity} from 'article/article.entity';
-import {hash} from 'bcrypt';
+import { ArticleEntity } from 'article/article.entity';
+import { hash } from 'bcrypt';
 import {
   BeforeInsert,
   Column,
@@ -7,7 +7,7 @@ import {
   JoinTable,
   ManyToMany,
   OneToMany,
-  PrimaryGeneratedColumn
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 
 @Entity({ name: 'users' })
