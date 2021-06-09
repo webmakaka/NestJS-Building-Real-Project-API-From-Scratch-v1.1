@@ -1,11 +1,13 @@
-import { ArticleEntity } from 'article/article.entity';
-import { hash } from 'bcrypt';
+import {ArticleEntity} from 'article/article.entity';
+import {hash} from 'bcrypt';
 import {
   BeforeInsert,
   Column,
   Entity,
+  JoinTable,
+  ManyToMany,
   OneToMany,
-  PrimaryGeneratedColumn,
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 @Entity({ name: 'users' })
@@ -35,4 +37,8 @@ export class UserEntity {
 
   @OneToMany(() => ArticleEntity, (article) => article.author)
   articles: ArticleEntity[];
+
+  @ManyToMany(() => ArticleEntity)
+  @JoinTable()
+  favorites: ArticleEntity[];
 }

@@ -561,6 +561,58 @@ $ curl \
     | python -m json.tool
 ```
 
+<br/>
+
+### 029 Реализуем лайк статей
+
+<br/>
+
+    $ yarn db:create AddFavoritesRelationsBetweenArticleAndUser
+    $ yarn db:migrate
+
+```
+// LIKE ARTICLE
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request POST "http://localhost:3000/articles/how-to-train-your-dragon-3xtce8/favorite" \
+    | python -m json.tool
+```
+
+<br/>
+
+**returns:**
+
+Смотрим: "favoritesCount": 1,
+
+```
+{
+    "article": {
+        "author": {
+            "bio": "",
+            "email": "marley@example.com",
+            "id": 1,
+            "image": "",
+            "username": "marley"
+        },
+        "body": "Updated body",
+        "createdAt": "2021-06-08T02:27:21.691Z",
+        "description": "Updated description",
+        "favoritesCount": 1,
+        "id": 3,
+        "slug": "how-to-train-your-dragon-3xtce8",
+        "tagList": [
+            "reactjs",
+            "angularjs",
+            "dragons"
+        ],
+        "title": "Updated Title",
+        "updatedAt": "2021-06-09T04:54:21.494Z"
+    }
+}
+```
+
+
 <br/><br/>
 
 ---

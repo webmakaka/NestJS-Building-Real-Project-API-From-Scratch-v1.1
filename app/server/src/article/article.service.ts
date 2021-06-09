@@ -1,12 +1,12 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { ArticleEntity } from 'article/article.entity';
-import { CreateArticleDto } from 'article/dto/createArticle.dto';
-import { IArticleResponse } from 'article/types/articleResponse.interface';
-import { IArticlesResponse } from 'article/types/articlesResponse.interface';
+import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {ArticleEntity} from 'article/article.entity';
+import {CreateArticleDto} from 'article/dto/createArticle.dto';
+import {IArticleResponse} from 'article/types/articleResponse.interface';
+import {IArticlesResponse} from 'article/types/articlesResponse.interface';
 import slugify from 'slugify';
-import { DeleteResult, getRepository, Repository } from 'typeorm';
-import { UserEntity } from 'user/user.entity';
+import {DeleteResult, getRepository, Repository} from 'typeorm';
+import {UserEntity} from 'user/user.entity';
 
 @Injectable()
 export class ArticleService {
@@ -121,6 +121,30 @@ export class ArticleService {
 
     Object.assign(article, updateArticleDto);
     return await this.articleRepository.save(article);
+  }
+
+  async addArticleToFavorites(
+    slug: string,
+    currentUserId: number,
+  ): Promise<ArticleEntity> {
+    const article = await this.findBySlug(slug);
+    const user = await this.userRepository.findOne(currentUserId, {
+      relations: ['favorites'],
+    });
+
+    const isNotFavorited =
+      user.favorites.findIndex(
+        (articleInFavorites) => articleInFavorites.id === article.id,
+      ) === -1;
+
+    if (isNotFavorited) {
+      user.favorites.push(article);
+      article.favoritesCount++;
+      await this.userRepository.save(user);
+      await this.articleRepository.save(article);
+    }
+
+    return article;
   }
 
   buildArticleResponse(article: ArticleEntity): IArticleResponse {
