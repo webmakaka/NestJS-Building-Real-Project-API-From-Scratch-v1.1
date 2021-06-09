@@ -2,9 +2,10 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ArticleEntity } from 'article/article.entity';
 import { CreateArticleDto } from 'article/dto/createArticle.dto';
-import { IArticleRespone } from 'article/types/articleResponse.interface';
+import { IArticleResponse } from 'article/types/articleResponse.interface';
+import { IArticlesResponse } from 'article/types/articlesResponse.interface';
 import slugify from 'slugify';
-import { DeleteResult, Repository } from 'typeorm';
+import { DeleteResult, getRepository, Repository } from 'typeorm';
 import { UserEntity } from 'user/user.entity';
 
 @Injectable()
@@ -12,7 +13,47 @@ export class ArticleService {
   constructor(
     @InjectRepository(ArticleEntity)
     private readonly articleRepository: Repository<ArticleEntity>,
+
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>,
   ) {}
+
+  async findAll(currentUserId: number, query: any): Promise<IArticlesResponse> {
+    const queryBuilder = getRepository(ArticleEntity)
+      .createQueryBuilder('articles')
+      .leftJoinAndSelect('articles.author', 'author');
+
+    queryBuilder.orderBy('articles.createdAt', 'DESC');
+
+    const articlesCount = await queryBuilder.getCount();
+
+    if (query.tag) {
+      queryBuilder.andWhere('articles.tagList LIKE :tag', {
+        tag: `%${query.tag}%`,
+      });
+    }
+
+    if (query.author) {
+      const author = await this.userRepository.findOne({
+        username: query.author,
+      });
+      queryBuilder.andWhere('articles.authorId = :id', {
+        id: author.id,
+      });
+    }
+
+    if (query.limit) {
+      queryBuilder.limit(query.limit);
+    }
+
+    if (query.offset) {
+      queryBuilder.offset(query.offset);
+    }
+
+    const articles = await queryBuilder.getMany();
+
+    return { articles, articlesCount };
+  }
 
   async createArticle(
     currentUser: UserEntity,
@@ -82,7 +123,7 @@ export class ArticleService {
     return await this.articleRepository.save(article);
   }
 
-  buildArticleResponse(article: ArticleEntity): IArticleRespone {
+  buildArticleResponse(article: ArticleEntity): IArticleResponse {
     return { article };
   }
 

@@ -517,6 +517,50 @@ $ curl \
 }
 ```
 
+<br/>
+
+### 028 Создаем фид
+
+https://github.com/typeorm/typeorm/blob/master/docs/select-query-builder.md
+
+```
+// GET ALL ARTICLES
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET http://localhost:3000/articles \
+    | python -m json.tool
+```
+
+<br/>
+
+```
+// GET ALL ARTICLES
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET "http://localhost:3000/articles?limit=2&offset=0" \
+    | python -m json.tool
+```
+
+<br/>
+
+```
+// GET ALL ARTICLES
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET "http://localhost:3000/articles?author=marley" \
+    | python -m json.tool
+```
+
+<br/>
+
+```
+// GET ALL ARTICLES
+$ curl \
+    --header "Content-Type: application/json" \
+    --request GET "http://localhost:3000/articles?tag=dragons" \
+    | python -m json.tool
+```
+
 <br/><br/>
 
 ---

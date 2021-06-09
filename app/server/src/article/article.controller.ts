@@ -6,13 +6,15 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { ArticleService } from 'article/article.service';
 import { CreateArticleDto } from 'article/dto/createArticle.dto';
-import { IArticleRespone } from 'article/types/articleResponse.interface';
+import { IArticleResponse } from 'article/types/articleResponse.interface';
+import { IArticlesResponse } from 'article/types/articlesResponse.interface';
 import { User } from 'user/decorators/user.decorator';
 import { AuthGuard } from 'user/guards/auth.guard';
 import { UserEntity } from 'user/user.entity';
@@ -21,13 +23,21 @@ import { UserEntity } from 'user/user.entity';
 export class ArticleController {
   constructor(private readonly articleService: ArticleService) {}
 
+  @Get()
+  async findAll(
+    @User('id') currentUserId: number,
+    @Query() query: any,
+  ): Promise<IArticlesResponse> {
+    return await this.articleService.findAll(currentUserId, query);
+  }
+
   @Post()
   @UseGuards(AuthGuard)
   @UsePipes(new ValidationPipe())
   async create(
     @User() currentUser: UserEntity,
     @Body('article') createArticleDto: CreateArticleDto,
-  ): Promise<IArticleRespone> {
+  ): Promise<IArticleResponse> {
     const article = await this.articleService.createArticle(
       currentUser,
       createArticleDto,
@@ -38,7 +48,7 @@ export class ArticleController {
   @Get(':slug')
   async getSingleArticle(
     @Param('slug') slug: string,
-  ): Promise<IArticleRespone> {
+  ): Promise<IArticleResponse> {
     const article = await this.articleService.findBySlug(slug);
     return this.articleService.buildArticleResponse(article);
   }
@@ -59,7 +69,7 @@ export class ArticleController {
     @User('id') currentUserId: number,
     @Param('slug') slug: string,
     @Body('article') updateArticleDto: CreateArticleDto,
-  ): Promise<IArticleRespone> {
+  ): Promise<IArticleResponse> {
     const article = await this.articleService.updateArticle(
       slug,
       updateArticleDto,
