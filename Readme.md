@@ -102,6 +102,23 @@ $ curl \
 
 <br/>
 
+Если подключить проект на angular:  
+https://github.com/webmakaka/Angular-and-NgRx-Building-Real-Project-From-Scratch
+
+<br/>
+
+![Application](/img/pic01.png?raw=true)
+
+<br/>
+
+![Application](/img/pic02.png?raw=true)
+
+<br/>
+
+![Application](/img/pic03.png?raw=true)
+
+<br/>
+
 ### [Development](./Development.md)
 
 <br/><br/>

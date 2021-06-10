@@ -883,6 +883,45 @@ $ curl \
 }
 ```
 
+<br/>
+
+### 037 Тестируем API на реальном фронтенде
+
+Проект:  
+https://github.com/webmakaka/Angular-and-NgRx-Building-Real-Project-From-Scratch
+
+<br/>
+
+```
+src/environment/environment.ts
+```
+
+Вместо
+
+```
+http://conduit.productionready.io/api
+
+```
+
+Прописать
+
+```
+http://localhost:3000
+```
+
+<br/>
+
+```
+$ yarn install
+$ yarn start
+```
+
+<br/>
+
+```
+localhost:4200
+```
+
 <br/><br/>
 
 ---
@@ -891,5 +930,9 @@ $ curl \
 
 **Marley**
 
-Any questions in english: <a href="https://jsdev.org/chat/">Telegram Chat</a>  
+Any questions in english: <a href="https://jsdev.org/chat/">Telegram Chat</a>
 Любые вопросы на русском: <a href="https://jsdev.ru/chat/">Телеграм чат</a>
+
+```
+
+```
