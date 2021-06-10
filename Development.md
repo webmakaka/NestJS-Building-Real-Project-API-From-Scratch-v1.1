@@ -273,7 +273,9 @@ $ curl \
 
 ### 018 Middleware авторизации
 
-    $ export TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTYyMzA0NDIyNX0.5cUoFz-R8b77gJVv60PaLu8-wmgLtwkfqOWXYQYfFpg
+```
+$ export TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTYyMzA0NDIyNX0.5cUoFz-R8b77gJVv60PaLu8-wmgLtwkfqOWXYQYfFpg
+```
 
 <br/>
 
@@ -286,7 +288,6 @@ $ curl \
             "password": "pass123"}
     }' \
     --header "Content-Type: application/json" \
-    --header "Authorization: Token ${TOKEN}" \
     --request POST http://localhost:3000/users/login \
     | python -m json.tool
 ```
@@ -651,6 +652,18 @@ $ curl \
     --request GET http://localhost:3000/articles \
     | python -m json.tool
 ```
+
+<br/>
+
+## 05 Модуль профиля
+
+<br/>
+
+### 031 Готовим сид данные для нашей базы
+
+    $ yarn db:drop
+    $ yarn db:migrate
+    $ yarn db:seed
 
 <br/><br/>
 

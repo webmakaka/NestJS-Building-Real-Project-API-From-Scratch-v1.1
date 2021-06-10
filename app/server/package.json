@@ -22,7 +22,8 @@
     "typeorm": "ts-node ./node_modules/typeorm/cli.js --config=src/ormconfig.ts",
     "db:drop": "NODE_PATH=./src yarn typeorm schema:drop",
     "db:create": "NODE_PATH=./src yarn typeorm migration:generate -- -n",
-    "db:migrate": "NODE_PATH=./src yarn typeorm migration:run"
+    "db:migrate": "NODE_PATH=./src yarn typeorm migration:run",
+    "db:seed": "NODE_PATH=./src ts-node ./node_modules/typeorm/cli.js --config=src/ormseedconfig.ts migration:run"
   },
   "dependencies": {
     "@nestjs/common": "^7.6.15",
