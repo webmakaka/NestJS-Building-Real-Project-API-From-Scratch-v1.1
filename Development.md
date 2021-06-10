@@ -842,6 +842,47 @@ $ curl \
 }
 ```
 
+<br/>
+
+## 06 Последние улучшения
+
+<br/>
+
+### 036 Улучшаем бекенд валидацию
+
+```
+// CREATE ARTICLE
+$ curl \
+    --data '{
+        "article": {
+        }
+    }' \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request POST http://localhost:3000/articles \
+    | python -m json.tool
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+    "errors": {
+        "body": [
+            "body should not be empty"
+        ],
+        "description": [
+            "description should not be empty"
+        ],
+        "title": [
+            "title should not be empty"
+        ]
+    }
+}
+```
+
 <br/><br/>
 
 ---

@@ -1,13 +1,13 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { ArticleEntity } from 'article/article.entity';
-import { CreateArticleDto } from 'article/dto/createArticle.dto';
-import { IArticleResponse } from 'article/types/articleResponse.interface';
-import { IArticlesResponse } from 'article/types/articlesResponse.interface';
-import { FollowEntity } from 'profile/follow.entity';
+import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+import {ArticleEntity} from 'article/article.entity';
+import {CreateArticleDto} from 'article/dto/createArticle.dto';
+import {IArticleResponse} from 'article/types/articleResponse.interface';
+import {IArticlesResponse} from 'article/types/articlesResponse.interface';
+import {FollowEntity} from 'profile/follow.entity';
 import slugify from 'slugify';
-import { DeleteResult, getRepository, Repository } from 'typeorm';
-import { UserEntity } from 'user/user.entity';
+import {DeleteResult, getRepository, Repository} from 'typeorm';
+import {UserEntity} from 'user/user.entity';
 
 @Injectable()
 export class ArticleService {
@@ -110,6 +110,7 @@ export class ArticleService {
     if (query.limit) {
       queryBuilder.limit(query.limit);
     }
+
     if (query.offset) {
       queryBuilder.offset(query.offset);
     }
