@@ -730,6 +730,37 @@ $ curl \
         "username": "webmakaka"
     }
 }
+```
+
+<br/>
+
+### 034 Реализуем анфоллоу пользователей
+
+<br/>
+
+```
+// UNFOLLOW USER
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request DELETE "http://localhost:3000/profiles/webmakaka/follow" \
+    | python -m json.tool
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+    "profile": {
+        "bio": "",
+        "following": false,
+        "id": 2,
+        "image": "",
+        "username": "webmakaka"
+    }
+}
 
 ```
 
