@@ -4,6 +4,7 @@ import { ArticleEntity } from 'article/article.entity';
 import { CreateArticleDto } from 'article/dto/createArticle.dto';
 import { IArticleResponse } from 'article/types/articleResponse.interface';
 import { IArticlesResponse } from 'article/types/articlesResponse.interface';
+import { FollowEntity } from 'profile/follow.entity';
 import slugify from 'slugify';
 import { DeleteResult, getRepository, Repository } from 'typeorm';
 import { UserEntity } from 'user/user.entity';
@@ -16,6 +17,9 @@ export class ArticleService {
 
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
+
+    @InjectRepository(FollowEntity)
+    private readonly followRepository: Repository<FollowEntity>,
   ) {}
 
   async findAll(currentUserId: number, query: any): Promise<IArticlesResponse> {
@@ -86,6 +90,34 @@ export class ArticleService {
     return { articles: articlesWithFavorited, articlesCount };
   }
 
+  async getFeed(currentUserId, query: any): Promise<IArticlesResponse> {
+    const follows = await this.followRepository.find({
+      followerId: currentUserId,
+    });
+
+    if (follows.length === 0) {
+      return { articles: [], articlesCount: 0 };
+    }
+
+    const followingUserIds = follows.map((follow) => follow.followingId);
+    const queryBuilder = getRepository(ArticleEntity)
+      .createQueryBuilder('articles')
+      .leftJoinAndSelect('articles.author', 'author')
+      .where('articles.authorId IN (:...ids)', { ids: followingUserIds });
+    queryBuilder.orderBy('articles.createdAt', 'DESC');
+    const articlesCount = await queryBuilder.getCount();
+
+    if (query.limit) {
+      queryBuilder.limit(query.limit);
+    }
+    if (query.offset) {
+      queryBuilder.offset(query.offset);
+    }
+
+    const articles = await queryBuilder.getMany();
+    return { articles, articlesCount };
+  }
+
   async createArticle(
     currentUser: UserEntity,
     createArticleDto: CreateArticleDto,
@@ -95,9 +127,7 @@ export class ArticleService {
     if (!article.tagList) {
       article.tagList = [];
     }
-
     article.slug = this.getSlug(createArticleDto.title);
-
     article.author = currentUser;
     return await this.articleRepository.save(article);
   }

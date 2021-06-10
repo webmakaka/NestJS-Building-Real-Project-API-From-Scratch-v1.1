@@ -9,15 +9,15 @@ import {
   Query,
   UseGuards,
   UsePipes,
-  ValidationPipe
+  ValidationPipe,
 } from '@nestjs/common';
-import {ArticleService} from 'article/article.service';
-import {CreateArticleDto} from 'article/dto/createArticle.dto';
-import {IArticleResponse} from 'article/types/articleResponse.interface';
-import {IArticlesResponse} from 'article/types/articlesResponse.interface';
-import {User} from 'user/decorators/user.decorator';
-import {AuthGuard} from 'user/guards/auth.guard';
-import {UserEntity} from 'user/user.entity';
+import { ArticleService } from 'article/article.service';
+import { CreateArticleDto } from 'article/dto/createArticle.dto';
+import { IArticleResponse } from 'article/types/articleResponse.interface';
+import { IArticlesResponse } from 'article/types/articlesResponse.interface';
+import { User } from 'user/decorators/user.decorator';
+import { AuthGuard } from 'user/guards/auth.guard';
+import { UserEntity } from 'user/user.entity';
 
 @Controller('articles')
 export class ArticleController {
@@ -29,6 +29,15 @@ export class ArticleController {
     @Query() query: any,
   ): Promise<IArticlesResponse> {
     return await this.articleService.findAll(currentUserId, query);
+  }
+
+  @Get('feed')
+  @UseGuards(AuthGuard)
+  async getFeed(
+    @User('id') currentUserId: number,
+    @Query() query: any,
+  ): Promise<IArticlesResponse> {
+    return await this.articleService.getFeed(currentUserId, query);
   }
 
   @Post()
