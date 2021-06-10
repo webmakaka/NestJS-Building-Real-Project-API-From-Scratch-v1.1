@@ -696,6 +696,43 @@ $ curl \
 }
 ```
 
+<br/>
+
+### 033 Имплементируем фоллоу пользователей
+
+Решили делать в ручную
+
+    $ yarn db:create CreateFollows
+    $ yarn db:migrate
+
+<br/>
+
+```
+// FOLLOW USER
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request POST "http://localhost:3000/profiles/webmakaka/follow" \
+    | python -m json.tool
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+    "profile": {
+        "bio": "",
+        "following": true,
+        "id": 2,
+        "image": "",
+        "username": "webmakaka"
+    }
+}
+
+```
+
 <br/><br/>
 
 ---

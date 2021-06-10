@@ -13,6 +13,11 @@ export class SeedDb1622970678816 implements MigrationInterface {
       `INSERT INTO users (username, email, password) VALUES ('marley', 'marley@example.com', '$2b$10$XmahzW3bLyboKuzGjLoO1ef1JKkqVoJvJkKd66/i6SP5q.kWNHcZG')`,
     );
 
+    // password pass123
+    await queryRunner.query(
+      `INSERT INTO users (username, email, password) VALUES ('webmakaka', 'webmakaka@example.com', '$2b$10$UdOxrsa7pgr8GvdeMJBnseJjnAYk20k0RqQGelSHe.mjY35mxnGcO')`,
+    );
+
     await queryRunner.query(
       `INSERT INTO articles (slug, title, description,body, "tagList", "authorId") VALUES ('first-article', 'First article', 'first article desc', 'first article body', 'coffee, dragons', 1)`,
     );
