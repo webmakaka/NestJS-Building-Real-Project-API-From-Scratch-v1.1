@@ -665,6 +665,37 @@ $ curl \
     $ yarn db:migrate
     $ yarn db:seed
 
+<br/>
+
+### 032 Реализуем получение профиля
+
+<br/>
+
+```
+// GET PROFILE
+$ curl \
+    --header "Content-Type: application/json" \
+    --header "Authorization: Token ${TOKEN}" \
+    --request GET "http://localhost:3000/profiles/marley" \
+    | python -m json.tool
+```
+
+<br/>
+
+**returns:**
+
+```
+{
+    "profile": {
+        "bio": "",
+        "following": false,
+        "id": 1,
+        "image": "",
+        "username": "marley"
+    }
+}
+```
+
 <br/><br/>
 
 ---

@@ -7,6 +7,7 @@
     $ cd server
     $ yarn install
     $ docker-compose up
+    $ yarn start:dev
     $ yarn db:migrate
     $ yarn db:seed
 
