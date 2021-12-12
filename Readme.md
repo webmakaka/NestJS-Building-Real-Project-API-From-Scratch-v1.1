@@ -1,5 +1,9 @@
 # [Oleksandr Kocherhin] NestJS - пишем API для реального проекта с нуля [RUS, 2021]
 
+```
+$ sudo apt install -y jq
+```
+
 <br/>
 
 ### Как запустить
@@ -15,7 +19,7 @@
 
 ```
 // LOGIN USER
-$ curl \
+$ AUTH_TOKEN=$(curl \
     --data '{
         "user": {
             "email": "marley@example.com",
@@ -23,14 +27,15 @@ $ curl \
     }' \
     --header "Content-Type: application/json" \
     --request POST http://localhost:3000/users/login \
-    | python -m json.tool
+    | jq -r '.user.token' )
 ```
 
 <br/>
 
 ```
-$ export TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtYXJsZXkiLCJlbWFpbCI6Im1hcmxleUBleGFtcGxlLmNvbSIsImlhdCI6MTYyMzI5MjIxOH0.BS5JqBWn46QqAhFBAh7DEcfm9HL48s3jRp3dm08Gtk0
+$ echo ${AUTH_TOKEN}
 ```
+
 
 <br/>
 
@@ -38,9 +43,9 @@ $ export TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJt
 // GET ALL ARTICLES
 $ curl \
     --header "Content-Type: application/json" \
-    --header "Authorization: Token ${TOKEN}" \
+    --header "Authorization: Token ${AUTH_TOKEN}" \
     --request GET http://localhost:3000/articles \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
