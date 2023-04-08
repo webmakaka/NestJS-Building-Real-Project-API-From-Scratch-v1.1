@@ -1,5 +1,12 @@
 # [Oleksandr Kocherhin] NestJS - пишем API для реального проекта с нуля [RUS, 2021]
 
+
+<br/>
+
+[Аналогичный проект с кодом на 2023 год](https://github.com/webmakaka/NestJS-Building-Real-Project-API-From-Scratch)
+
+<br/>
+
 ```
 $ sudo apt install -y jq
 ```
