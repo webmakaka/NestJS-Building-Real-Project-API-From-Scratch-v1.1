@@ -108,15 +108,13 @@ SELECT * FROM migrations;
 ### 012 Подготавливаем запрос для регистрации
 
 ```
-// CREATE USER
+// REGISTER USER
 $ curl \
     --header "Content-Type: application/json" \
     --request POST http://localhost:3000/users
 ```
 
-<br/>
 
-### 012 Подготавливаем запрос для регистрации
 
 <br/>
 
