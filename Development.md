@@ -131,7 +131,7 @@ $ curl \
     }' \
     --header "Content-Type: application/json" \
     --request POST http://localhost:3000/users \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -247,7 +247,7 @@ $ curl \
     }' \
     --header "Content-Type: application/json" \
     --request POST http://localhost:3000/users/login \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -287,7 +287,7 @@ $ curl \
     }' \
     --header "Content-Type: application/json" \
     --request POST http://localhost:3000/users/login \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -302,7 +302,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request GET http://localhost:3000/user \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -325,7 +325,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request PUT http://localhost:3000/user \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -367,7 +367,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request POST http://localhost:3000/articles \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -449,7 +449,7 @@ $ curl \
 $ curl \
     --header "Content-Type: application/json" \
     --request GET http://localhost:3000/articles/how-to-train-your-dragon-17mw6c \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -462,7 +462,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request DELETE http://localhost:3000/articles/how-to-train-your-dragon-17mw6c \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -482,7 +482,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request PUT http://localhost:3000/articles/how-to-train-your-dragon-3xtce8 \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -529,7 +529,7 @@ https://github.com/typeorm/typeorm/blob/master/docs/select-query-builder.md
 $ curl \
     --header "Content-Type: application/json" \
     --request GET http://localhost:3000/articles \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -539,7 +539,7 @@ $ curl \
 $ curl \
     --header "Content-Type: application/json" \
     --request GET "http://localhost:3000/articles?limit=2&offset=0" \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -549,7 +549,7 @@ $ curl \
 $ curl \
     --header "Content-Type: application/json" \
     --request GET "http://localhost:3000/articles?author=marley" \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -559,7 +559,7 @@ $ curl \
 $ curl \
     --header "Content-Type: application/json" \
     --request GET "http://localhost:3000/articles?tag=dragons" \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -579,7 +579,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request POST "http://localhost:3000/articles/how-to-train-your-dragon-3ptf9i/favorite" \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -626,7 +626,7 @@ $ curl \
 $ curl \
     --header "Content-Type: application/json" \
     --request GET "http://localhost:3000/articles?favorited=marley" \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -637,7 +637,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request DELETE "http://localhost:3000/articles/how-to-train-your-dragon-3xtce8/favorite" \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -648,7 +648,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request GET http://localhost:3000/articles \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -675,7 +675,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request GET "http://localhost:3000/profiles/marley" \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -711,7 +711,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request POST "http://localhost:3000/profiles/webmakaka/follow" \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -742,7 +742,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request DELETE "http://localhost:3000/profiles/webmakaka/follow" \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -788,7 +788,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request POST http://localhost:3000/articles \
-    | python -m json.tool
+    | jq
 ```
 
 ```
@@ -803,7 +803,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request GET "http://localhost:3000/articles/feed" \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
@@ -858,7 +858,7 @@ $ curl \
     --header "Content-Type: application/json" \
     --header "Authorization: Token ${TOKEN}" \
     --request POST http://localhost:3000/articles \
-    | python -m json.tool
+    | jq
 ```
 
 <br/>
